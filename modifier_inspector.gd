@@ -8,7 +8,15 @@ var regex
 
 func _init():
 	regex = RegEx.new()
-	regex.compile("\\w*/\\w*")
+	regex.compile("\\w*/\\w*(/\\w*)?")
+
+#func _split_path_like_regex(path):
+#	var strings = path.split("/")
+#	var colons_strings = strings[1].split(":")
+#	strings[1] = colons_strings[0]
+#	if colons_strings.size() > 1:
+#		strings.append(colons_strings[1])
+#	return strings
 
 func can_handle(object):
 	return object is Modifiers
@@ -30,18 +38,23 @@ func parse_property(object, type, path, hint, hint_text, usage):
 	elif regex.search(path) != null:
 		var result = regex.search(path)
 		var strings = result.get_string().split("/")
-		if strings[1] == "_add_modifier":
+		if strings[1] == "_add_modifier" and strings.size() == 2:
 			var adder = preload("ModifierAdder.tscn").instance()
 			adder.object = object
 			adder.target_node = object.target_node
 			adder.property = strings[0]
 			add_custom_control(adder)
-		elif strings[1].ends_with("__options"):
-			var remover = preload("ModifierRemover.tscn").instance()
-			add_custom_control(remover)
+		elif strings.size() >= 3 and strings[2] == "mix_mode":
+			var mix_mode_property = preload("MixModeProperty.tscn").instance()
+			mix_mode_property.hint = hint
+			mix_mode_property.hint_string = hint_text
+			print("instancing property editor of "+path)
+			add_property_editor(path, mix_mode_property)
+			var separator = preload("ModifierSeparator.tscn").instance()
+			add_custom_control(separator)
+#			add_custom_control(mix_mode_property)
 #			var editor = PropertySelector.new()
 #			add_property_editor(path, )
-			pass
 		else:
 			return false
 		return true
