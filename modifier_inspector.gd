@@ -39,22 +39,25 @@ func parse_property(object, type, path, hint, hint_text, usage):
 		var result = regex.search(path)
 		var strings = result.get_string().split("/")
 		if strings[1] == "_add_modifier" and strings.size() == 2:
+			var separator = preload("ModifierSeparator.tscn").instance()
+			add_custom_control(separator)
 			var adder = preload("ModifierAdder.tscn").instance()
 			adder.object = object
 			adder.target_node = object.target_node
 			adder.property = strings[0]
 			add_custom_control(adder)
-		elif strings.size() >= 3 and strings[2] == "mix_mode":
-			var mix_mode_property = preload("MixModeProperty.tscn").instance()
-			mix_mode_property.hint = hint
-			mix_mode_property.hint_string = hint_text
+#		elif strings.size() >= 3 and strings[2] == "mix_mode":
+#			var mix_mode_property = preload("MixModeProperty.tscn").instance()
+#			mix_mode_property.hint = hint
+#			mix_mode_property.hint_string = hint_text
+#			print("instancing property editor of "+path)
+#			add_property_editor(path, mix_mode_property)
+#			var separator = preload("ModifierSeparator.tscn").instance()
+#			add_custom_control(separator)
+		elif strings.size() >= 3 and strings[2] == "active":
+			var active_property_row = preload("ActivePropertyRow.tscn").instance()
+			add_property_editor(path, active_property_row)
 			print("instancing property editor of "+path)
-			add_property_editor(path, mix_mode_property)
-			var separator = preload("ModifierSeparator.tscn").instance()
-			add_custom_control(separator)
-#			add_custom_control(mix_mode_property)
-#			var editor = PropertySelector.new()
-#			add_property_editor(path, )
 		else:
 			return false
 		return true
