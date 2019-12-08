@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://addons/modifiers/mix_mode_property.gd" type="Script" id=1]
+[ext_resource path="res://addons/modifiers/editor_theme.tres" type="Theme" id=1]
+[ext_resource path="res://addons/modifiers/mix_mode_property.gd" type="Script" id=2]
 
 [sub_resource type="Image" id=7]
 data = {
@@ -51,8 +52,9 @@ size = Vector2( 16, 16 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
+theme = ExtResource( 1 )
 label = "Mix Mode"
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 640.0
@@ -61,13 +63,13 @@ margin_bottom = 70.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 640.0
-margin_bottom = 22.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer2"]
 margin_top = 1.0
 margin_right = 544.0
-margin_bottom = 21.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 text = "Options"
@@ -78,27 +80,33 @@ selected = 1
 [node name="MoveUp" type="Button" parent="VBoxContainer/HBoxContainer2"]
 margin_left = 548.0
 margin_right = 576.0
-margin_bottom = 22.0
+margin_bottom = 24.0
 size_flags_vertical = 3
 icon = SubResource( 2 )
 
 [node name="MoveDown" type="Button" parent="VBoxContainer/HBoxContainer2"]
 margin_left = 580.0
 margin_right = 608.0
-margin_bottom = 22.0
+margin_bottom = 24.0
 size_flags_vertical = 6
 icon = SubResource( 4 )
 
 [node name="Remove" type="Button" parent="VBoxContainer/HBoxContainer2"]
 margin_left = 612.0
 margin_right = 640.0
-margin_bottom = 22.0
+margin_bottom = 24.0
 size_flags_vertical = 6
 icon = SubResource( 6 )
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 margin_left = 640.0
-margin_right = 1280.0
+margin_right = 944.0
 margin_bottom = 70.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 dialog_text = "Do you really want to remove this modifier?"
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer2/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/MoveUp" to="." method="_on_MoveUp_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/MoveDown" to="." method="_on_MoveDown_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Remove" to="." method="_on_Remove_pressed"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]
