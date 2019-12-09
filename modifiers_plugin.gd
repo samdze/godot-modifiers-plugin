@@ -2,16 +2,18 @@ tool
 extends EditorPlugin
 
 var inspector_plugin
+var inspector_mix_mode
 
 func _enter_tree():
-	inspector_plugin = preload("modifier_inspector.gd").new()
-	inspector_plugin.connect("refresh_requested", self, "_on_ModifierInspector_refresh_requested")
+	inspector_plugin = preload("components/modifier_inspector.gd").new()
 	add_inspector_plugin(inspector_plugin)
+	
+	inspector_mix_mode = preload("components/mix_mode_inspector.gd").new()
+	add_inspector_plugin(inspector_mix_mode)
 
 func _exit_tree():
 	remove_inspector_plugin(inspector_plugin)
-
-func _on_ModifierInspector_refresh_requested(object):
-	print("refresh_requested")
-#	get_editor_interface().get_inspector().refresh()
-#	get_editor_interface().get_inspector().update()
+	inspector_plugin = null
+	
+	remove_inspector_plugin(inspector_mix_mode)
+	inspector_mix_mode = null
