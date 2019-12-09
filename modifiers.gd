@@ -53,7 +53,7 @@ func add_modifier(property, name, value, mix_mode = default_mix_mode, position =
 	modifiers[property].insert(position, {
 		"name": name,
 		"value": value,
-		"mix_mode": default_mix_mode,
+		"mix_mode": mix_mode,
 		"active": true
 	})
 	property_list_changed_notify()
