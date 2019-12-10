@@ -52,6 +52,10 @@ Once the plugin has been enabled:
   ModifiersNode.get("<property_name>/<modifier_name>/value")
   ModifiersNode.get("<property_name>/<modifier_name>/mix_mode")
   ModifiersNode.get("<property_name>/<modifier_name>/active")
+  
+  ModifiersNode.set("<property_name>/<modifier_name>/value", value)
+  ModifiersNode.set("<property_name>/<modifier_name>/mix_mode", mix_mode)
+  ModifiersNode.set("<property_name>/<modifier_name>/active", active)
   ```
   
   or
