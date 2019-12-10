@@ -17,8 +17,19 @@ Node that allows the creation of multiple chained modifiers for any node propert
 - Define custom mix modes for your project.
 - Custom editors and inspectors to ease the use of the plugin.
 
+# Usage examples
 
-# Usage
+The examples below are possible even without this plugin, but the Modifiers node allows a flexible, modular and decoupled implementation.
+
+- Set the scale of a node combining several independent vectors:
+  - Enlarg 2x your character for a limited amount of time if a power up is picked up.
+    More than one of the same power up can be stacked, resulting in 4x, 8x ecc enlargement!
+- Set an int or a float value combining several independent values:
+  - Increase or decrease your character's jump power or speed based on what terrain he is walking on.
+- Set a resource override to a node only when needed:
+  - Override the CollisionShape of your character only when he is attacking.
+
+# How to use
 Once the plugin has been enabled:
 
 
