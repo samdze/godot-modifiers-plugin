@@ -103,7 +103,6 @@ func _get_script_property_list():
 	
 	var now_script = false
 	for p in properties:
-#		print(p)
 		if p.usage == PROPERTY_USAGE_CATEGORY:
 			if not ClassDB.class_exists(p.name):
 				script_properties.append({

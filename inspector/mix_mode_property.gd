@@ -16,7 +16,6 @@ func update_property():
 	
 	updating = true
 	var index = 0
-#	if typeof(new_value) != TYPE_STRING:
 	for i in range(mix_modes.size()):
 		if mix_modes[i] == new_value:
 			index = i

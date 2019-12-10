@@ -11,7 +11,6 @@ func parse_property(object, type, path, hint, hint_text, usage):
 		var mix_modes = mix_modes_collection.get(hint_strings[1]).duplicate()
 		if hint_strings.size() > 2:
 			for i in range(mix_modes.size() - 1, -1, -1):
-				print("mix mode: " + str(mix_modes[i]))
 				if mix_modes[i].object_class != "" and mix_modes[i].object_class != hint_strings[2]:
 					mix_modes.remove(i)
 		var all_types_mix_modes = mix_modes_collection.get(str(TYPE_NIL)).duplicate()

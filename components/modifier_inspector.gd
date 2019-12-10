@@ -15,7 +15,6 @@ func can_handle(object):
 
 func parse_property(object, type, path, hint, hint_text, usage):
 	self.object = object
-#	print({ "object": object, "type": type, "path": path, "hint": hint, "hint_text": hint_text, "usage": usage })
 	if path == "modifiers":
 		return true
 	elif path == "base_values":
@@ -41,7 +40,6 @@ func parse_property(object, type, path, hint, hint_text, usage):
 		elif strings.size() >= 3 and strings[2] == "active":
 			var active_property_row = preload("../inspector/ActivePropertyRow.tscn").instance()
 			add_property_editor(path, active_property_row)
-#			print("instancing property editor of "+path)
 		else:
 			return false
 		return true

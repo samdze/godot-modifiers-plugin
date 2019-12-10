@@ -1,21 +1,16 @@
 # - Mark red properties/modifiers not available in new selected target object.
-# -x Add customizable mix modes for every type.
-# -x Make every property type display in the way they are displayed in the target node,
-#	following hint, hint_string, ecc.
-# -x Fix miscellaneus UI.
-# - Remove all prints and comments.
-
 tool
 extends Node
-class_name Modifiers
+class_name Modifiers, "icon_modifiers.svg"
 
 const default_mix_mode = preload("mix_modes/object_substitute.tres")
 
 export var target_node_path : NodePath setget _set_target_node_path
-export var modifiers : Dictionary = Dictionary()
+
 # Dictionary { property_names...: Array }
 #	- Array [ Dictionary ]
 #		- Dictionary { name, value, mix_mode, active } 
+export var modifiers : Dictionary = Dictionary()
 
 var target_node
 var regex
@@ -135,19 +130,6 @@ func _combine_value(property, from):
 	for i in range(from + 1, modifiers_array.size()):
 		if modifiers_array[i]["active"]:
 			value = modifiers_array[i]["mix_mode"].resolve(value, modifiers_array[i]["value"])
-	
-#	match type:
-#		TYPE_REAL:
-#			for i in range(from + 1, modifiers_array.size()):
-#				if modifiers_array[i]["active"]:
-#					# MULTIPLY float function
-#					value = value * modifiers_array[i]["value"]
-#		TYPE_VECTOR2:
-#			for i in range(from + 1, modifiers_array.size()):
-#				if modifiers_array[i]["active"]:
-#					# MULTIPLY Vector2 
-#					value.x = value.x * modifiers_array[i]["value"].x
-#					value.y = value.y * modifiers_array[i]["value"].y
 	return value
 
 func _find_first_active_modifier(property):
@@ -177,18 +159,11 @@ func _set(property, value):
 	var result = regex.search(property)
 	if result:
 		var strings = result.get_string().split("/")
-#		if not modifiers.has(strings[0]):
-#			modifiers[strings[0]] = Dictionary()
-#		modifiers[strings[0]][strings[1]] = value
-#		_update_property(strings[0])
 		var ret = false
-#		print("trying to set "+property+", strings is: "+str(strings))
 		if modifiers.has(strings[0]):
-#			print("object has "+strings[0])
 			for m in modifiers[strings[0]]:
 				if m["name"] == strings[1] and (strings[2] == "value" or strings[2] == "mix_mode" or strings[2] == "active"):
 					m[strings[2]] = value
-#					print("modifier " + strings[1] + " set to " + str(value))
 					_update_property(strings[0])
 					ret = true
 		return ret
@@ -199,9 +174,6 @@ func _get(property):
 	var result = regex.search(property)
 	if result:
 		var strings = result.get_string().split("/")
-#		if modifiers.has(strings[0]):
-#			if modifiers[strings[0]].has(strings[1]):
-#				return modifiers[strings[0]][strings[1]]
 		if modifiers.has(strings[0]):
 			var m = _get_modifier_by_name(strings[0], strings[1])
 			if m != null and (strings[2] == "value" or strings[2] == "mix_mode" or strings[2] == "active"):
@@ -226,7 +198,6 @@ func _get_property_list():
 			if target_node:
 				var properties = target_node.get_property_list()
 				for node_p in properties:
-#					print(node_p)
 					if node_p.name == p:
 						type = node_p.type
 						object_class_name = node_p["class_name"]

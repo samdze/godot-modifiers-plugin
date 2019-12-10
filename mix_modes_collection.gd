@@ -1,6 +1,6 @@
 tool
 extends Resource
-class_name MixModesCollection
+class_name MixModesCollection, "icon_modifiers.svg"
 
 export(Array, Resource) var all_types_mix_modes
 export(Array, Resource) var bool_mix_modes

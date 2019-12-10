@@ -1,9 +1,8 @@
 tool
 extends Resource
-class_name MixMode
+class_name MixMode, "icon_modifiers.svg"
 
 export var name: String = ""
-#export(int, "Nil", "bool", "int", "float", "String", "Vector2", "Rect2", "Vector3", "Transform2D", "Plane", "Quat", "AABB", "Basis", "Transform", "Color", "NodePath", "RID", "Object", "Dictionary", "Array", "PoolByteArray", "PoolIntArray", "PoolRealArray", "PoolStringArray", "PoolVector2Array", "PoolVector3Array", "PoolColorArray") var type: int = 0
 export var is_object: bool
 export var object_class: String
 

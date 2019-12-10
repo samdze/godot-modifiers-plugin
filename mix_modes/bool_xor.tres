@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Or"
+name = "Exclusive Or"
 is_object = false
 object_class = ""
 expression = "(a and not b) or (not a and b)"
