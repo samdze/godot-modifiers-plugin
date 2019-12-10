@@ -4,7 +4,7 @@
 Node that allows the creation of multiple chained modifiers for any node property.
 
 # Installation
-- Clone this repository in your addon folder.
+- Clone this repository in your addons folder.
 - Navigate to Project -> Project Settings -> Plugin and enable the Modifiers plugin.
 
 # Features
@@ -19,10 +19,10 @@ Node that allows the creation of multiple chained modifiers for any node propert
 
 
 # Usage
-Once the plugin has been enabled.
+Once the plugin has been enabled:
 
 
-## Modifiers
+### Modifiers
 - Add the Modifiers node to your scene.
 - Select a target node in the Modifiers node inspector.
   This node will receive the influence of the modifiers you define.
@@ -86,7 +86,7 @@ Once the plugin has been enabled.
   get_modifier_names(property_name)
   ```
 
-## Mix Modes
+### Mix Modes
 Mix modes are simple Resources.
 
 To define a custom mix mode:
