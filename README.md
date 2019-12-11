@@ -39,7 +39,7 @@ The examples below are possible even without this plugin, but the Modifiers node
 
 # How to use
 Once the plugin has been enabled:
-
+![creation and use of a Modifiers node](https://i.imgur.com/Rm9fqIk.gif).
 
 ### Modifiers
 - Add the Modifiers node to your scene.
