@@ -19,6 +19,12 @@ The Modifiers node is useful whether there are properties that need to change in
 - Define custom mix modes for your project.
 - Custom editors and inspectors to ease the use of the plugin.
 
+# Next steps
+While the plugin is functional and many things can be achieved with it, there are a few extra features I'd like to add eventually, maybe when Godot will better support plugins creation exposing more functionality to scripting languages:
+
+- Allow the creation of any type of property modifier, not limited to a single input of the same type as the property to be modified, but allowing any type and number of inputs.
+- More editor and inspector support.
+
 # Usage examples
 
 The examples below are possible even without this plugin, but the Modifiers node allows a flexible, modular and decoupled implementation.
