@@ -62,9 +62,10 @@ func _generate_properties_tree():
 				parent_item.set_icon(0, _get_editor_icon(p.name))
 				parent_item.set_selectable(0, false)
 			elif p.usage & PROPERTY_USAGE_STORAGE:
-				var item : TreeItem = $WindowDialog/MarginContainer/VBoxContainer/Tree.create_item(parent_item)
-				item.set_text(0, p.name)
-				item.set_icon(0, _get_editor_icon(str(TYPE_MAPPINGS.get(p.type))))
+				if not object.modifiers.has(p.name):
+					var item : TreeItem = $WindowDialog/MarginContainer/VBoxContainer/Tree.create_item(parent_item)
+					item.set_text(0, p.name)
+					item.set_icon(0, _get_editor_icon(str(TYPE_MAPPINGS.get(p.type))))
 
 func _get_editor_icon(name):
 	var icon = theme.get("EditorIcons/icons/"+name)
@@ -133,5 +134,16 @@ func _on_Confirm_pressed():
 
 
 func _on_PropertyAdder_property_selected(property):
-	object.add_property(property)
+	if $WindowDialog/MarginContainer/VBoxContainer/HBoxContainer/CreateModifier.pressed:
+		$AddModifierDialog.object = object
+		$AddModifierDialog.target_node = target_node
+		$AddModifierDialog.property = property
+		$AddModifierDialog.popup_centered()
+	else:
+		object.add_property(property)
 	$WindowDialog.hide()
+
+
+func _on_AddModifierDialog_modifier_generated(name):
+	var property = $AddModifierDialog.property
+	object.add_modifier(property, name, target_node.get(property))
