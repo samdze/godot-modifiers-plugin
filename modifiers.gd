@@ -24,18 +24,19 @@ func _ready():
 
 func _set_target_node_path(value):
 	target_node_path = value
-	target_node = null
+	var prev_target_node = target_node
 	if has_node(target_node_path):
 		target_node = get_node(target_node_path)
 	if target_node != null:
 		for p in modifiers.keys():
 			_update_property(p)
-	property_list_changed_notify()
+	if prev_target_node != target_node:
+		property_list_changed_notify()
 
 func add_property(property):
 	if not modifiers.has(property):
 		modifiers[property] = []
-	property_list_changed_notify()
+		property_list_changed_notify()
 
 func add_modifier(property, name, value, mix_mode = default_mix_mode, position = -1):
 	add_property(property)
@@ -193,9 +194,9 @@ func _get_property_list():
 		for k in modifiers[p]:
 			var type = TYPE_OBJECT
 			var object_class_name = ""
-			var hint
+			var hint = PROPERTY_HINT_NONE
 			var hint_string = "MixMode,0"
-			if target_node:
+			if target_node != null and target_node != self:
 				var properties = target_node.get_property_list()
 				for node_p in properties:
 					if node_p.name == p:
