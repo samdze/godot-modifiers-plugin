@@ -20,7 +20,7 @@ The Modifiers node is useful whether there are properties that need to change in
 - Custom editors and inspectors to ease the use of the plugin.
 
 # Next steps
-While the plugin is functional and many things can be achieved with it, there are a few extra features I'd like to add eventually, maybe when Godot will better support plugins creation exposing more functionality to scripting languages.
+Although the plugin is functional and many things can be achieved with it, there are a few extra features I'd like to add eventually, maybe when Godot will better support plugins creation exposing more functionality to scripting languages.
 
 See: https://github.com/godotengine/godot-proposals/issues/300
 
