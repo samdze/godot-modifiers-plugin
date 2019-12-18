@@ -40,8 +40,9 @@ The examples below are possible even without this plugin, but the Modifiers node
   - Override the CollisionShape of your character only when he is attacking.
 
 # How to use
-Once the plugin has been enabled:
-![creation and use of a Modifiers node](https://i.imgur.com/Rm9fqIk.gif).
+Once the plugin has been enabled here's the creation and use of a Modifiers node:
+
+https://i.imgur.com/DhLvp0f.gif.
 
 ### Modifiers
 - Add the Modifiers node to your scene.
