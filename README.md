@@ -20,7 +20,9 @@ The Modifiers node is useful whether there are properties that need to change in
 - Custom editors and inspectors to ease the use of the plugin.
 
 # Next steps
-While the plugin is functional and many things can be achieved with it, there are a few extra features I'd like to add eventually, maybe when Godot will better support plugins creation exposing more functionality to scripting languages:
+Although the plugin is functional and many things can be achieved with it, there are a few extra features I'd like to add eventually, maybe when Godot will better support plugins creation exposing more functionality to scripting languages.
+
+See: https://github.com/godotengine/godot-proposals/issues/300
 
 - Allow the creation of any type of property modifier, not limited to a single input of the same type as the property to be modified, but allowing any type and number of inputs.
 - More editor and inspector support.
@@ -38,8 +40,9 @@ The examples below are possible even without this plugin, but the Modifiers node
   - Override the CollisionShape of your character only when he is attacking.
 
 # How to use
-Once the plugin has been enabled:
-![creation and use of a Modifiers node](https://i.imgur.com/Rm9fqIk.gif).
+Once the plugin has been enabled here's the creation and use of a Modifiers node:
+
+https://i.imgur.com/DhLvp0f.gif.
 
 ### Modifiers
 - Add the Modifiers node to your scene.
