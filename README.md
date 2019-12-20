@@ -6,7 +6,7 @@ Node that allows the creation of multiple chained modifiers for any node propert
 The Modifiers node is useful whether there are properties that need to change in not predefined ways, plus having each change step saved so that a rollback can be easily performed.
 
 # Installation
-- Clone this repository in your addons folder.
+- Copy the addons/modifiers folder in your addons folder.
 - Navigate to Project -> Project Settings -> Plugin and enable the Modifiers plugin.
 
 # Features
