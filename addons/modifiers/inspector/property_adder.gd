@@ -7,11 +7,11 @@ const TYPE_MAPPINGS = {
 	TYPE_ARRAY: "Array",
 	TYPE_COLOR: "Color",
 	TYPE_VECTOR2: "Vector2",
-    TYPE_INT: "int",
+	TYPE_INT: "int",
 	TYPE_REAL: "float",
-    TYPE_NIL: "Null",
-    TYPE_STRING: "String",
-    TYPE_DICTIONARY: "Dictionary",
+	TYPE_NIL: "Null",
+	TYPE_STRING: "String",
+	TYPE_DICTIONARY: "Dictionary",
 	TYPE_BOOL: "bool",
 	TYPE_NODE_PATH: "NodePath",
 	TYPE_VECTOR3: "Vector2",
@@ -41,6 +41,7 @@ func _on_Button_pressed():
 		if $WindowDialog/MarginContainer/VBoxContainer/Tree.get_selected() == null:
 			$WindowDialog/MarginContainer/VBoxContainer/HBoxContainer/Confirm.disabled = true
 		$WindowDialog.popup_centered(Vector2(800, 600))
+		$WindowDialog/MarginContainer/VBoxContainer/Tree.grab_focus()
 
 func _generate_properties_tree():
 	$WindowDialog/MarginContainer/VBoxContainer/Tree.clear()
@@ -61,7 +62,7 @@ func _generate_properties_tree():
 				parent_item.set_text(0, p.name)
 				parent_item.set_icon(0, _get_editor_icon(p.name))
 				parent_item.set_selectable(0, false)
-			elif p.usage & PROPERTY_USAGE_STORAGE:
+			elif p.usage & PROPERTY_USAGE_STORAGE or p.usage & PROPERTY_USAGE_EDITOR:
 				if not object.modifiers.has(p.name):
 					var item : TreeItem = $WindowDialog/MarginContainer/VBoxContainer/Tree.create_item(parent_item)
 					item.set_text(0, p.name)

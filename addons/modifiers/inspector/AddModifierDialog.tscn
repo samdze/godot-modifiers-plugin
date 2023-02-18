@@ -76,6 +76,8 @@ margin_right = 244.0
 margin_bottom = 20.0
 size_flags_horizontal = 6
 text = "Cancel"
+
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="text_entered" from="MarginContainer/VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Footer/OkCreateButton" to="." method="_on_OkCreateButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Footer/CancelButon" to="." method="hide"]

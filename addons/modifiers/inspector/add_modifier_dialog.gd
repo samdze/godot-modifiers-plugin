@@ -39,6 +39,9 @@ func _on_LineEdit_text_changed(new_text):
 		$MarginContainer/VBoxContainer/ErrorLabel.add_color_override("font_color", get_parent().theme.get("Editor/colors/error_color"))
 		$MarginContainer/VBoxContainer/ErrorLabel.text = "Invalid or already defined modifier name."
 
+func _on_LineEdit_text_entered(new_text):
+	_on_OkCreateButton_pressed()
+
 func _on_OkCreateButton_pressed():
 	var text = $MarginContainer/VBoxContainer/HBoxContainer/LineEdit.text
 	hide()

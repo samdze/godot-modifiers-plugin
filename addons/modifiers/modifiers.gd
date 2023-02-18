@@ -10,7 +10,7 @@ export var target_node_path : NodePath setget _set_target_node_path
 # Dictionary { property_names...: Array }
 #	- Array [ Dictionary ]
 #		- Dictionary { name, value, mix_mode, active } 
-export var modifiers : Dictionary = Dictionary()
+export var modifiers: Dictionary = Dictionary()
 
 var target_node
 var regex
